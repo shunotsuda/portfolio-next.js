@@ -22,13 +22,36 @@ const Message = () => {
                         <div className="border-b border-green-500">New Message</div>
                     </Link>
             </header>
-            {emptyArray.map(() => (
                 <div className="bg-white p-8">
                     <div className="border-b  border-green-500">
                         message一覧
                     </div>
                 </div>
-            ))}
+                <div className="bg-white p-8">
+                    <div className="border-b  border-green-500">
+                        message一覧
+                    </div>
+                </div>
+                <div className="bg-white p-8">
+                    <div className="border-b  border-green-500">
+                        message一覧
+                    </div>
+                </div>
+                <div className="bg-white p-8">
+                    <div className="border-b  border-green-500">
+                        message一覧
+                    </div>
+                </div>
+                <div className="bg-white p-8">
+                    <div className="border-b  border-green-500">
+                        message一覧
+                    </div>
+                </div>
+                <div className="bg-white p-8">
+                    <div className="border-b  border-green-500">
+                        message一覧
+                    </div>
+                </div>
         </div>
     );
 };
