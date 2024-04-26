@@ -10,8 +10,8 @@ const Logo = () => {
                 <div
                     className={`${dancingScript.className} px-4 text-2xl md:text-4xl font-bold`}
                 >
-                    &nbsp;shun
-                    <br /> &nbsp;~portfolio~
+                    <span>shun</span>
+                    <br /> <span>~portfolio~</span>
                 </div>
             </Link>
         </div>
