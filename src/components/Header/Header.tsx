@@ -6,7 +6,7 @@ import MenuBar from "../MenuBar/MenuBar";
 import NavList from "../NavList/NavList";
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };

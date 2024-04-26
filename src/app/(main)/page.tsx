@@ -13,6 +13,7 @@ export default function Home() {
                             alt="photo"
                             width={400}
                             height={400}
+                            priority={true}
                             className="relative size-[150px] md:size-[200px] xl:size-[300px] rounded-full object-cover shadow-xl lg:grayscale group-hover/grayscale:grayscale-0"
                         />
                         <span className="absolute bottom-[-2rem] left-0 right-0 text-center text-xs md:text-sm text-slate-600 border-b-2 border-b-slate-300 hidden group-hover/tool-tip:block">
