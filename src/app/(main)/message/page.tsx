@@ -5,7 +5,6 @@ import { IoIosCreate } from "react-icons/io";
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 const Message = () => {
-    const emptyArray = new Array(10).fill(null);
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
             <header className=" w-full flex flex-row justify-between items-center bg-white">
