@@ -31,7 +31,7 @@ const MessageEditButton: FC<MessageEditButtonProps> = ({ id , password }) => {
     };
 
     return (
-        <>
+        <div className="flex-grow-0">
             <Dialog>
                 <DialogTrigger asChild>
                     <div className="flex items-center cursor-pointer bg-slate-200 hover:opacity-75 px-4 rounded-lg">
@@ -69,7 +69,7 @@ const MessageEditButton: FC<MessageEditButtonProps> = ({ id , password }) => {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-        </>
+        </div>
     );
 };
 

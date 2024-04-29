@@ -8,7 +8,7 @@ const dancingScript = Dancing_Script({ subsets: ["latin"] });
 const Message = () => {
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
-            <header className=" w-full flex flex-row justify-between items-center bg-white pb-4 max-w-[980px] m-auto">
+            <header className=" w-full flex flex-col md:flex-row justify-between items-center bg-white pb-4 max-w-[980px] m-auto">
                 <h1
                     className={`${dancingScript.className} text-[3rem] lg:text-[4rem] font-bold ml-4 md:ml-4`}
                 >
@@ -25,7 +25,7 @@ const Message = () => {
             <div className="bg-white px-8 py-4 max-w-[980px] m-auto">
                 <div className="border-b  border-green-500">
                     <div className="flex justify-between">
-                        <h2 className="font-bold text-xl">
+                        <h2 className="font-bold text-xl flex-1">
                             - 株式会社△〇　×× -
                         </h2>
                         <MessageEditButton id={`1`} password="sirokuma" />
