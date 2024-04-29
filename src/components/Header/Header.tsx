@@ -14,7 +14,7 @@ const Header = () => {
         <>
             <div className="w-full h-20 fixed z-[9999] flex justify-between items-center  bg-gray-800 text-white md:hidden">
                 <Logo />
-                <MenuBar onClick={toggleMenu} />
+                <MenuBar onClick={toggleMenu} isOpen={isOpen} />
             </div>
             <div className="w-full h-20 md:hidden"></div>
             {isOpen && (
