@@ -12,6 +12,8 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 type MessageEditButtonProps = {
     id: string;
@@ -41,17 +43,17 @@ const MessageEditButton: FC<MessageEditButtonProps> = ({ id , password }) => {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle>Password check</DialogTitle>
+                        <DialogTitle className="mb-2">Please Password</DialogTitle>
                         <DialogDescription>
                             作成したときに登録したパスワードを入力してください。
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                         <div className="grid grid-cols-4 items-center gap-4">
-                            <label htmlFor="password" className="text-right">
+                            <Label htmlFor="password" className="text-right">
                                 Password
-                            </label>
-                            <input
+                            </Label>
+                            <Input
                                 id="password"
                                 type="password"
                                 className="col-span-3 border"

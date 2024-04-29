@@ -1,7 +1,6 @@
+import CreateMessageButton from "@/components/CreateMessageButton/CreateMessageButton";
 import MessageEditButton from "@/components/MessageCard/MessageEditButton/MessageEditButton";
 import { Dancing_Script } from "next/font/google";
-import Link from "next/link";
-import { IoIosCreate } from "react-icons/io";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
@@ -9,13 +8,7 @@ const Message = () => {
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
            <div className="flex justify-end mb-4">
-                <Link
-                        href="/message/new"
-                        className=" flex items-center gap-1 text-[1rem] md:text-sm md:font-semibold border px-2 md:px-4 py-2 md:py-3 mr-4 rounded-full shadow-sm text-white hover:text-opacity-75 bg-gray-800 hover:bg-gray-700"
-                    >
-                        <IoIosCreate className="md:size-5" />
-                        <div className="border-b border-green-500">New Message</div>
-                    </Link>
+                <CreateMessageButton />
            </div>
             <header className=" w-full  bg-white pb-4 max-w-[980px] m-auto">
                 <h1
