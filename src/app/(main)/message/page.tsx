@@ -1,4 +1,4 @@
-import MessageEditButton from "@/components/MessageCard/MessageEditButton/MessageEditButton";
+import MessageEditButton from "../../../components/MessageCard/MessageEditButton/MessageEditButton";
 import { Dancing_Script } from "next/font/google";
 import Link from "next/link";
 import { IoIosCreate } from "react-icons/io";
