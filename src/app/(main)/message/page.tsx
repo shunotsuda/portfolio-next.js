@@ -1,4 +1,4 @@
-import CreateMessageButton from "@/components/CreateMessageButton/CreateMessageButton";
+import MessageCreateCard from "@/components/MessageCard/MessageCreateCard/MessageCreateCard";
 import MessageEditCard from "@/components/MessageCard/MessageEditCard/MessageEditCard";
 import { Dancing_Script } from "next/font/google";
 
@@ -9,7 +9,7 @@ const Message = () => {
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
            <div className="flex justify-end mb-4">
-                <CreateMessageButton />
+                <MessageCreateCard />
            </div>
             <header className=" w-full  bg-white pb-4 max-w-[980px] m-auto">
                 <h1

@@ -5,11 +5,11 @@ const dancingScript = Dancing_Script({ subsets: ["latin"] });
 export default function Home() {
     return (
         <div className=" w-full h-full flex justify-center items-center p-4 md:p-8">
-            <div className="group/grayscale p-8 md:p-20 bg-white md:bg-homeCardColor  md:hover:bg-white w-full md:w-[85%] max-w-[950px] shadow-md">
+            <div className="group/grayscale px-8 pt-8 pb-20 md:p-20 bg-custom-image w-full md:w-[85%] max-w-[950px] shadow-md">
                 <div className="flex flex-col items-center lg:flex-row">
                     <div className="relative group/tool-tip">
                         <Image
-                            src="/IMG_0406.jpg"
+                            src="/IMG_0380.jpg"
                             alt="photo"
                             width={400}
                             height={400}
