@@ -1,17 +1,15 @@
-"use client";
-
 import { FC, useState } from "react";
 import { FaPen } from "react-icons/fa";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
+    DialogClose,
     DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
@@ -20,13 +18,11 @@ type MessageEditButtonProps = {
     password: string;
 };
 
-const MessageEditButton: FC<MessageEditButtonProps> = ({ id , password }) => {
+const MessageEditButton: FC<MessageEditButtonProps> = ({ id, password }) => {
     const [inputPassword, setInputPassword] = useState("");
-    const router = useRouter();
 
     const onClickPassWordValidate = () => {
         if (inputPassword === password) {
-            router.push(`/message/edit/${id}`);
         } else {
             alert("パスワードが違います");
         }
@@ -43,7 +39,9 @@ const MessageEditButton: FC<MessageEditButtonProps> = ({ id , password }) => {
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
-                        <DialogTitle className="mb-2">Please Password</DialogTitle>
+                        <DialogTitle className="mb-2">
+                            Please Password
+                        </DialogTitle>
                         <DialogDescription>
                             作成したときに登録したパスワードを入力してください。
                         </DialogDescription>
@@ -58,7 +56,9 @@ const MessageEditButton: FC<MessageEditButtonProps> = ({ id , password }) => {
                                 type="password"
                                 className="col-span-3 border"
                                 value={inputPassword}
-                                onChange={(e) => setInputPassword(e.target.value)}
+                                onChange={(e) =>
+                                    setInputPassword(e.target.value)
+                                }
                             />
                         </div>
                     </div>

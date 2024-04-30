@@ -1,10 +1,11 @@
 import CreateMessageButton from "@/components/CreateMessageButton/CreateMessageButton";
-import MessageEditButton from "@/components/MessageCard/MessageEditButton/MessageEditButton";
+import MessageEditCard from "@/components/MessageCard/MessageEditCard/MessageEditCard";
 import { Dancing_Script } from "next/font/google";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 const Message = () => {
+    
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
            <div className="flex justify-end mb-4">
@@ -24,7 +25,7 @@ const Message = () => {
                         <h2 className="font-bold text-xl flex-1">
                             - 株式会社△〇　×× -
                         </h2>
-                        <MessageEditButton id={`1`} password="sirokuma" />
+                        <MessageEditCard id={`1`}/>
                     </div>
                     <div className="mt-4">
                         <p className="max-w-[90%] m-auto">
@@ -41,7 +42,7 @@ const Message = () => {
                 <div className="border-b  border-green-500">
                     <div className="flex justify-between">
                         <h2 className="font-bold text-xl">-　匿名　-</h2>
-                        <MessageEditButton id={`1`} password="tenten" />
+                        <MessageEditCard id={`1`} />
                     </div>
                     <div className="mt-4">
                         <p className="max-w-[90%] m-auto">
@@ -51,48 +52,7 @@ const Message = () => {
                     <p className=" text-sm p-4 text-right">2024/5/6</p>
                 </div>
             </div>
-            <div className="bg-white px-8 py-4 max-w-[980px] m-auto">
-                <div className="border-b  border-green-500">
-                    <div className="flex justify-between">
-                        <h2 className="font-bold text-xl">-　匿名　-</h2>
-                        <MessageEditButton id={`1`} password="tenten" />
-                    </div>
-                    <div className="mt-4">
-                        <p className="max-w-[90%] m-auto">
-                            就職活動頑張ってください！
-                        </p>
-                    </div>
-                    <p className=" text-sm p-4 text-right">2024/5/6</p>
-                </div>
-            </div>
-            <div className="bg-white px-8 py-4 max-w-[980px] m-auto">
-                <div className="border-b  border-green-500">
-                    <div className="flex justify-between">
-                        <h2 className="font-bold text-xl">-　匿名　-</h2>
-                        <MessageEditButton id={`1`} password="tenten" />
-                    </div>
-                    <div className="mt-4">
-                        <p className="max-w-[90%] m-auto">
-                            就職活動頑張ってください！
-                        </p>
-                    </div>
-                    <p className=" text-sm p-4 text-right">2024/5/6</p>
-                </div>
-            </div>
-            <div className="bg-white px-8 py-4 max-w-[980px] m-auto">
-                <div className="border-b  border-green-500">
-                    <div className="flex justify-between">
-                        <h2 className="font-bold text-xl">-　匿名　-</h2>
-                        <MessageEditButton id={`1`} password="tenten" />
-                    </div>
-                    <div className="mt-4">
-                        <p className="max-w-[90%] m-auto">
-                            就職活動頑張ってください！
-                        </p>
-                    </div>
-                    <p className=" text-sm p-4 text-right">2024/5/6</p>
-                </div>
-            </div>
+           
         </div>
     );
 };
