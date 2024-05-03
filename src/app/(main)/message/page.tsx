@@ -1,4 +1,3 @@
-
 import MessageCard from "@/components/MessageCard/MessageCard";
 import MessageCreateCard from "@/components/MessageCard/MessageCreateCard/MessageCreateCard";
 import { MessageDocument } from "@/models/message";
@@ -6,21 +5,25 @@ import { Dancing_Script } from "next/font/google";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
-
-
-export default async function Message() {
-    const getAllMessages = async (): Promise<MessageDocument[]> => {
+const getAllMessages = async (): Promise<MessageDocument[]> => {
+    try {
         const response = await fetch(`${process.env.API_URL}/messages`, {
-            cache:"no-store",
+            cache: "no-store",
         });
-    
-        if (response.status !== 200) {
-            throw new Error();
+
+        if (!response.ok) {
+            throw new Error("メッセージの取得に失敗しました。");
         }
-    
+
         const data = await response.json();
         return data.messages as MessageDocument[];
-    };
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+};
+
+export default async function Message() {
     const allMessages = await getAllMessages();
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
@@ -33,8 +36,10 @@ export default async function Message() {
                 >
                     ~ Message ~
                 </h1>
-                {allMessages.map((message) => <MessageCard key={message._id} message={message} />)}
+                {allMessages.map((message) => (
+                    <MessageCard key={message._id} message={message} />
+                ))}
             </div>
         </div>
     );
-};
+}

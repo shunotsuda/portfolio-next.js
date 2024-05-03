@@ -23,7 +23,7 @@ export const createMessage = async (state: FormState, formData: FormData) => {
         return state;
     }
 
-    redirect("/message");
+    return redirect("/message");
 };
 
 export const updateMessage = async (
@@ -45,7 +45,7 @@ export const updateMessage = async (
         return state;
     }
 
-    redirect("/message");
+   return redirect("/message");
 };
 
 export const deleteMessage = async (
@@ -61,5 +61,5 @@ export const deleteMessage = async (
         return state;
     }
 
-    redirect("/message");
+   return redirect("/message");
 };
