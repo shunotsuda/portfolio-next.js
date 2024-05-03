@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,25 +26,36 @@ import {
     SheetHeader,
     SheetTitle,
 } from "@/components/ui/sheet";
+import { MessageDocument } from "@/models/message";
+import { FormState, deleteMessage, updateMessage } from "@/actions/message";
+import { useFormState, useFormStatus } from "react-dom";
+import MessageCardDeleteButton from "../MessageCardDeleteButton/MessageCardDeleteButton";
 
 type MessageEditButtonProps = {
-    id: string;
+    message: MessageDocument;
 };
 
-const MessageEditCard: FC<MessageEditButtonProps> = ({ id }) => {
+const MessageEditCard: FC<MessageEditButtonProps> = ({ message }) => {
+    //valueの初期値用
+    const [editName, setEditName] = useState(message.name);
+    const [editMessage, setEditMessage] = useState(message.message);
+    const [editPassword, setEditPassword] = useState(message.password);
+
     const [isOpen, setIsOpen] = useState(false);
     const [validatePassword, setValidatePassword] = useState("");
     const [PasswordFlag, setPasswordFlag] = useState(false);
-    const [editPassword, setEditPassword] = useState("");
 
     const openDialog = () => setIsOpen(true);
     const closeDialog = () => {
         setValidatePassword("");
         setIsOpen(false);
     };
+    const closeSheet = () => {
+        setPasswordFlag(false);
+    };
 
     const handleConfirm = () => {
-        if (validatePassword === id) {
+        if (validatePassword === message.password) {
             setPasswordFlag(true);
             closeDialog();
         } else {
@@ -52,24 +63,29 @@ const MessageEditCard: FC<MessageEditButtonProps> = ({ id }) => {
         }
     };
 
-    const closeSheet = () => {
-        setEditPassword("");
-        setPasswordFlag(false);
-    };
+    const updateMessageID = updateMessage.bind(null, message._id);
+    const initialState: FormState = { error: "" };
+    const [state, formUpdateAction] = useFormState(
+        updateMessageID,
+        initialState
+    );
 
-    const EditMessage = () => {
-        if (editPassword === id) {
-            setPasswordFlag(false);
-        } else {
-            alert("パスワードが違います");
-        }
-    };
-    const DeleteMessage = () => {
-        if (editPassword === id) {
-            setPasswordFlag(false);
-        } else {
-            alert("パスワードが違います");
-        }
+    const UpdateButton = () => {
+        const { pending } = useFormStatus();
+        useEffect(() => {
+            if (pending) {
+                closeSheet(); // 更新が成功したら状態を更新
+            }
+        }, [pending]);
+        return (
+            <button
+                type="submit"
+                disabled={pending}
+                className="m-8 md:mx-10 my-2 rounded-full shadow-sm text-white hover:text-opacity-75 bg-green-700 hover:bg-gray-700 px-6 py-2 text-center disabled:bg-gray-400"
+            >
+                更新
+            </button>
+        );
     };
 
     return (
@@ -146,9 +162,15 @@ const MessageEditCard: FC<MessageEditButtonProps> = ({ id }) => {
                                     Name
                                 </Label>
                                 <Input
+                                    form="updateForm"
                                     id="name"
+                                    name="name"
                                     className="col-span-3"
-                                    placeholder="name or title here."
+                                    value={editName}
+                                    onChange={(e) =>
+                                        setEditName(e.target.value)
+                                    }
+                                    required
                                 />
                             </div>
                             <div className="grid gap-4 py-4">
@@ -160,54 +182,53 @@ const MessageEditCard: FC<MessageEditButtonProps> = ({ id }) => {
                                         message
                                     </Label>
                                     <Textarea
+                                        form="updateForm"
                                         placeholder="message here."
                                         id="message"
+                                        name="message"
                                         className="col-span-3"
+                                        value={editMessage}
+                                        onChange={(e) =>
+                                            setEditMessage(e.target.value)
+                                        }
+                                        required
                                     />
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4 md:mr-8">
                                 <Label
-                                    htmlFor="username"
+                                    htmlFor="password"
                                     className="text-center"
                                 >
                                     password
                                 </Label>
                                 <Input
-                                    id="username"
+                                    form="updateForm"
+                                    id="password"
+                                    name="password"
                                     className="col-span-3"
-                                    placeholder="password here."
                                     value={editPassword}
                                     onChange={(e) =>
                                         setEditPassword(e.target.value)
                                     }
+                                    required
                                 />
                             </div>
                         </div>
-                        <SheetFooter className="flex justify-center  md:justify-end items-center  my-4 mr-8">
-                            <SheetClose asChild>
-                                <button
-                                    type="submit"
-                                    className="m-8 md:mx-10 my-2"
-                                    onClick={DeleteMessage}
-                                >
-                                    <div className=" rounded-full shadow-sm text-white hover:text-opacity-75 bg-green-700 hover:bg-gray-700 px-6 py-2 text-center">
-                                        更新
-                                    </div>
-                                </button>
-                            </SheetClose>
-                            <SheetClose asChild>
-                                <button
-                                    type="submit"
-                                    className="m-8 md:mx-10 my-2"
-                                    onClick={EditMessage}
-                                >
-                                    <div className=" rounded-full shadow-sm text-white hover:text-opacity-75 bg-red-800 hover:bg-gray-700 px-6 py-2 text-center">
-                                        削除
-                                    </div>
-                                </button>
-                            </SheetClose>
+                        <SheetFooter className="flex  justify-center md:justify-end items-center  ">
+                            <form action={formUpdateAction} id="updateForm">
+                                <UpdateButton />
+                            </form>
+                            <MessageCardDeleteButton
+                                id={message._id}
+                                closeSheet={() => closeSheet()}
+                            />
                         </SheetFooter>
+                        {state && state.error !== "" && (
+                            <p className="mt-2 text-red-500 text-sm">
+                                {state.error}
+                            </p>
+                        )}
                     </SheetContent>
                 </Sheet>
             )}

@@ -1,58 +1,40 @@
+import MessageCard from "@/components/MessageCard/MessageCard";
 import MessageCreateCard from "@/components/MessageCard/MessageCreateCard/MessageCreateCard";
-import MessageEditCard from "@/components/MessageCard/MessageEditCard/MessageEditCard";
+import { MessageDocument } from "@/models/message";
 import { Dancing_Script } from "next/font/google";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
-const Message = () => {
-    
+const getAllMessages = async (): Promise<MessageDocument[]> => {
+    const response = await fetch(`${process.env.API_URL}/messages`, {
+        cache: "no-store",
+    });
+
+    if (response.status !== 200) {
+        throw new Error();
+    }
+
+    const data = await response.json();
+    return data.messages as MessageDocument[];
+};
+
+const Message = async () => {
+    const allMessages = await getAllMessages();
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
-           <div className="flex justify-end mb-4">
+            <div className="flex justify-end mb-4">
                 <MessageCreateCard />
-           </div>
-            <header className=" w-full  bg-white pb-4 max-w-[980px] m-auto">
+            </div>
+            <div className=" w-full  bg-white  max-w-[980px] m-auto pb-4">
                 <h1
-                    className={`${dancingScript.className} text-center text-[3rem] lg:text-[4rem] font-bold`}
+                    className={`${dancingScript.className} text-center text-[3rem] lg:text-[4rem] font-bold py-4`}
                 >
                     ~ Message ~
                 </h1>
-                
-            </header>
-            <div className="bg-white px-8 py-4 max-w-[980px] m-auto">
-                <div className="border-b  border-green-500">
-                    <div className="flex justify-between">
-                        <h2 className="font-bold text-xl flex-1">
-                            - 株式会社△〇　×× -
-                        </h2>
-                        <MessageEditCard id={`1`}/>
-                    </div>
-                    <div className="mt-4">
-                        <p className="max-w-[90%] m-auto">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Est velit saepe cupiditate animi tempora nulla
-                            illo magni facilis enim praesentium autem maxime
-                            quisquam cum rem quam quia, magnam eum maiores!
-                        </p>
-                    </div>
-                    <p className=" text-sm p-4 text-right">2024/5/5</p>
-                </div>
+                {allMessages.map((message) => (
+                    <MessageCard key={message._id} message={message} />
+                ))}
             </div>
-            <div className="bg-white px-8 py-4 max-w-[980px] m-auto">
-                <div className="border-b  border-green-500">
-                    <div className="flex justify-between">
-                        <h2 className="font-bold text-xl">-　匿名　-</h2>
-                        <MessageEditCard id={`1`} />
-                    </div>
-                    <div className="mt-4">
-                        <p className="max-w-[90%] m-auto">
-                            就職活動頑張ってください！
-                        </p>
-                    </div>
-                    <p className=" text-sm p-4 text-right">2024/5/6</p>
-                </div>
-            </div>
-           
         </div>
     );
 };
