@@ -1,3 +1,4 @@
+
 import MessageCard from "@/components/MessageCard/MessageCard";
 import MessageCreateCard from "@/components/MessageCard/MessageCreateCard/MessageCreateCard";
 import { MessageDocument } from "@/models/message";
@@ -6,8 +7,8 @@ import { Dancing_Script } from "next/font/google";
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 const getAllMessages = async (): Promise<MessageDocument[]> => {
-    const response = await fetch(`${process.env.API_URL}/messages`, {
-        cache: "no-store",
+    const response = await fetch(`https://portfolio-next-js-beta-eight.vercel.app/api/messages`, {
+        cache:"no-store",
     });
 
     if (response.status !== 200) {
@@ -18,7 +19,7 @@ const getAllMessages = async (): Promise<MessageDocument[]> => {
     return data.messages as MessageDocument[];
 };
 
-const Message = async () => {
+export default async function Message() {
     const allMessages = await getAllMessages();
     return (
         <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
@@ -38,5 +39,3 @@ const Message = async () => {
         </div>
     );
 };
-
-export default Message;
