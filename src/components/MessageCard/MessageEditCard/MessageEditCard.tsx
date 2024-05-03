@@ -27,7 +27,7 @@ import {
     SheetTitle,
 } from "@/components/ui/sheet";
 import { MessageDocument } from "@/models/message";
-import { FormState, deleteMessage, updateMessage } from "@/actions/message";
+import { FormState, updateMessage } from "@/actions/message";
 import { useFormState, useFormStatus } from "react-dom";
 import MessageCardDeleteButton from "../MessageCardDeleteButton/MessageCardDeleteButton";
 
