@@ -34,7 +34,7 @@ export default async function Message() {
                 <h1
                     className={`${dancingScript.className} text-center text-[3rem] lg:text-[4rem] font-bold py-4`}
                 >
-                    ~ Message ~
+                    <span className="border-b-2">~ Message ~</span>
                 </h1>
                 {allMessages.map((message) => (
                     <MessageCard key={message._id} message={message} />
