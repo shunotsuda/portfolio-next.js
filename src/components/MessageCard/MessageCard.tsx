@@ -25,7 +25,7 @@ const MessageCard: FC<MessageCardProps> = ({ message }) => {
     const formatted = formatter.format(new Date(message.updatedAt));
     return (
         <div className="bg-white w-[95%]  px-8 py-4 max-w-[980px] mx-auto my-4 shadow-sm shadow-slate-500">
-            <div className="border-b  border-green-500">
+            <div className="border-b border-black">
                 <div className="flex justify-between">
                     <h2 className="font-bold text-xl flex-1">
                         - {message.name} -

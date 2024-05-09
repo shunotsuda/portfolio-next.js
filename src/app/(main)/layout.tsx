@@ -9,7 +9,7 @@ const MainLayout = ({
     return (
         <div className="w-full min-h-screen md:flex">
             <Header />
-            <div className="fixed top-0 left-0 right-0 bottom-0 m-auto z-[-1] bg-[url('/product-backdrop-with-empty-white-room-flowers-shadow.jpg')] bg-cover"></div>
+            <div className="fixed top-0 left-0 right-0 bottom-0 m-auto z-[-1] bg-slate-700 "></div>
             <SideMenu />
             <main className="md:flex-1">{children}</main>
         </div>

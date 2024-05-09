@@ -26,15 +26,15 @@ const getAllMessages = async (): Promise<MessageDocument[]> => {
 export default async function Message() {
     const allMessages = await getAllMessages();
     return (
-        <div className="m-4 md:p-10 text-gray-800 h-full overflow-y-auto overflow-x-hidden">
-            <div className="flex justify-end mb-4">
+        <div className="p-4 md:p-10 text-gray-700 h-full overflow-y-auto overflow-x-hidden">
+            <div className="flex justify-end">
                 <MessageCreateCard />
             </div>
-            <div className=" w-full  bg-white  max-w-[980px] m-auto pb-4">
+            <div className=" w-full  bg-slate-700  max-w-[980px] m-auto pb-6">
                 <h1
-                    className={`${dancingScript.className} text-center text-[3rem] lg:text-[4rem] font-bold py-4`}
+                    className={`${dancingScript.className} text-white text-center text-[3rem] lg:text-[4rem] font-bold  `}
                 >
-                    <span className="border-b-2">~ Message ~</span>
+                    <span className="border-b-2 text-white border-sky-500">~ Message ~</span>
                 </h1>
                 {allMessages.map((message) => (
                     <MessageCard key={message._id} message={message} />

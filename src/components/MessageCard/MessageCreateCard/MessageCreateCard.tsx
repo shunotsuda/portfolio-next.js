@@ -41,9 +41,9 @@ const MessageCreateCard = () => {
         <>
             <Sheet>
                 <SheetTrigger>
-                    <div className=" flex items-center gap-1 text-[1rem] md:text-sm md:font-semibold border px-2 md:px-4 py-2 md:py-3 mr-4 rounded-full shadow-sm text-white hover:text-opacity-75 bg-gray-800 hover:bg-gray-700">
+                    <div className=" flex items-center gap-1 text-[1rem] md:text-sm md:font-semibold border border-white px-2 md:px-4 py-2 md:py-3 mr-4 rounded-full shadow-sm text-slate-950 hover:text-opacity-75 bg-slate-300 hover:opacity-75">
                         <IoIosCreate className="md:size-5" />
-                        <div className="border-b border-green-500 pr-2">
+                        <div className="pr-2">
                             新規作成
                         </div>
                     </div>

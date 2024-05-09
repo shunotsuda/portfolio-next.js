@@ -24,7 +24,7 @@ const HistoryCard: FC<learningContentProps> = ({
         <>
             <AccordionItem value={value}>
                 <AccordionTrigger>{learningField}</AccordionTrigger>
-                <AccordionContent>
+                <AccordionContent className="text-black">
                     <p className=" px-4 leading-10">学習度 {learningLevel}</p>
                     <ul className="leading-10">
                         {udemyItems.length !== 0 && (

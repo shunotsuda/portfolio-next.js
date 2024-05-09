@@ -1,10 +1,10 @@
 const loading = () => {
     return (
         <div
-            className="h-full flex justify-center items-center"
+            className="min-h-screen h-full flex justify-center items-center"
             aria-label="読み込み中"
         >
-            <div className="animate-spin h-10  md:h-20 w-10 md:w-20 border-2 md:border-4 border-green-500 rounded-full border-t-transparent"></div>
+            <div className="animate-spin h-10  md:h-20 w-10 md:w-20 border-1 md:border-2 border-gray-600 rounded-full border-t-transparent"></div>
         </div>
     );
 };

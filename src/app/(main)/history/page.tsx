@@ -11,7 +11,7 @@ const learningContents = [
         value: "item-1",
         learningField: "HTML5 & CSS3",
         learningLevel: "★★★★★",
-        udemyItems: ["[世界で70万人が受講] Web Developer Bootcamp 2023 (日本語版)（講師:Colt Steele 講師:Ken Fukuyama","【2023年最新】【JavaScript&CSS】ガチで学びたい人のためのWEB開発実践入門（フロントエンド編）(講師:【CodeMafia】 WEBプログラミング学習)"],
+        udemyItems: ["[世界で70万人が受講] Web Developer Bootcamp 2023 (日本語版)（講師:Colt Steele / 講師:Ken Fukuyama)","【2023年最新】【JavaScript&CSS】ガチで学びたい人のためのWEB開発実践入門（フロントエンド編）(講師:【CodeMafia】 WEBプログラミング学習)"],
         bookItems: ["1冊ですべて身につくHTML & CSSとWebデザイン入門講座 (著者:Mana)","ほんの一手間で劇的に変わるHTML & CSSとWebデザイン実践講座 (著者:Mana)"],
     },
     {
@@ -39,7 +39,7 @@ const learningContents = [
         value: "item-5",
         learningField: "MongoDB",
         learningLevel: "★★★☆☆",
-        udemyItems: ["[世界で70万人が受講] Web Developer Bootcamp 2023 (日本語版)（講師:Colt Steele 講師:Ken Fukuyama"],
+        udemyItems: ["[世界で70万人が受講] Web Developer Bootcamp 2023 (日本語版)（講師:Colt Steele / 講師:Ken Fukuyama)"],
         bookItems: ["MongoDB 解体新書 (著者:田村 達也)"],
     },
     {
@@ -81,7 +81,7 @@ const learningContents = [
 
 const History = () => {
     return (
-        <div className="bg-white h-full">
+        <div className="bg-slate-700 text-white  h-full">
             <div className="px-8">
                 <h1
                     className={`${dancingScript.className} text-center text-[3rem] lg:text-[4rem] font-bold py-4`}
